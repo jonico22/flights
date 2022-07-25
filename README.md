@@ -41,6 +41,12 @@ Para el manejo de estado y rutas fue utilizada estas librerias
 react-redux
 react-router-dom
 
+### DEPLOY DE LA APLICACION
+
+Se integro con el servicio de vercel
+
+https://vuela-barato-fwv1lflma-joseyananicolas.vercel.app/
+
 ### GENERACION JSON PARA CODIGOS IATIA
 
 Para obtener estos codigos lo consegui de un json en la web, con datos de nombre de 
