@@ -2,7 +2,7 @@ const DropdownSimple = ({ options, value, handleChange,name } )=> {
     return(
         <>
             <div className="w-full">
-                <select className="flex items-center justify-center w-full text-sm py-3 pl-2 pr-2 border" 
+                <select className="block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm" 
                 name={name} id={name}
                 value={value} onChange={handleChange}>
                     <option value="">Seleccione</option>

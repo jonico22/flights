@@ -1,6 +1,22 @@
+import jsonData from '../data/airport.json'
+
 export const filterCarriers = (id, carriers) => {
 	let filter = carriers.filter((item) => item.id === id)
-	return filter[0].name
+	return filter.length ? filter[0].name : null
+}
+
+export const getDataAirport = ()=>{
+	let newData = []
+	jsonData.map( item =>{
+		newData.push(
+			{
+				value : item.IATA,
+				label: item.city + ' - ' + item.country
+			}
+		)
+	})
+	console.log(newData)
+	return newData
 }
 
 export const filterAircraft = (id, aircraft) => {
@@ -21,8 +37,8 @@ export const objectToArray = (data) => {
 
 export const detailFilter = (id,data)=>{
 	let filter = data.filter((item)=> item.id === id)
-	console.log(filter[0].itineraries)
-	return filter[0].itineraries
+	console.log(filter[0])
+	return filter[0]
 }
 
 

@@ -59,7 +59,7 @@ export const fetchResultsDetail = (data) => async (dispatch) => {
 		person: data.Adults,
 		children: data.kids,
 		initDate: format(data.initDate, 'yyyy-MM-dd'),
-		endDate: format(data.endDate, 'yyyy-MM-dd')
+		endDate:  format(data.endDate, 'yyyy-MM-dd')
 	}
 	try {
 		dispatch(fetchDetailStart())
@@ -69,7 +69,7 @@ export const fetchResultsDetail = (data) => async (dispatch) => {
 		dispatch(fetchDetailLocations(objectToArray(response.dictionaries.locations)))
 		dispatch(fetchDetailAircraft(objectToArray(response.dictionaries.aircraft)))
 		dispatch(fetchDetailCarriers(objectToArray(response.dictionaries.carriers)))
-		dispatch(fetchDetailMeta(objectToArray(response.meta)))
+		dispatch(fetchDetailMeta(response.meta))
 	} catch (error) {
 		dispatch(fetchDetailError(error))
 	}
@@ -81,5 +81,6 @@ export const detailError = (state) => state.detail.error;
 export const detailData = (state) => state.detail.data;
 export const carriersData = (state)=> state.detail.carriers;
 export const aircraftData = (state)=> state.detail.aircraft;
+export const metaData = (state)=> state.detail.meta;
 
 export default reducer

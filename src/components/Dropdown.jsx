@@ -8,6 +8,7 @@ const Dropdown = ({ options, onChange }) => {
 				//defaultValue={options.find((option) => option.value === option.value)}
 				options={options}
 				onChange={onChange}
+				placeholder={'SELECCIONE'}
 			/>
 		</>
 	)

@@ -19,7 +19,6 @@ export async function apiShopping(params,token ) {
 		urlencoded.append('children', params.children)
 		urlencoded.append('departureDate', params.initDate)
 		urlencoded.append('returnDate', params.endDate)
-
     try {
      const response = await fetch(
         `${import.meta.env.VITE_URL_API_SHOPPING}?${urlencoded}`,
