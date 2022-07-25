@@ -1,4 +1,4 @@
-import SearchFilter from '../components/searchFilter'
+import SearchFilter from '../components/SearchFilter'
 import Result from '../components/Results'
 import Header from '../components/Header'
 const Index = () => {
