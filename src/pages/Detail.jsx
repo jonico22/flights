@@ -6,7 +6,6 @@ import { filterCarriers, detailFilter, filterAircraft } from '../utils'
 import { es } from 'date-fns/locale'
 import { formatInTimeZone } from 'date-fns-tz'
 import Header from '../components/Header'
-import Footer from '../components/Footer'
 import { useNavigate} from 'react-router-dom';
 
 const Detail = () => {
@@ -125,7 +124,6 @@ const Detail = () => {
 					</>
 				) : null}
 			</main>
-			<Footer />
 		</>
 	)
 }

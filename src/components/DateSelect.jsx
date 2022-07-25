@@ -1,6 +1,6 @@
 import DatePicker from 'react-datepicker'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid'
-import { format } from 'date-fns'
+import { addDays, format } from 'date-fns'
 import { forwardRef } from 'react'
 
 const ButtonInput = forwardRef(({ value, onClick }, ref) => (
@@ -35,6 +35,7 @@ const DateSelect = ({ handle, value }) => {
 				<DatePicker
 					selected={value === '' ? new Date() : value}
 					onChange={handle}
+					minDate={addDays(new Date(), 1)}
 					nextMonthButtonLabel='>'
 					previousMonthButtonLabel='<'
 					popperClassName='react-datepicker-left'

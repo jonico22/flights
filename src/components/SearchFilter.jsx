@@ -9,32 +9,7 @@ import { useDispatch } from 'react-redux'
 import ContainerForm from './ContainerForm'
 
 import { getDataAirport } from '../utils'
-const dataType = [
-	{
-		value: 'LIM',
-		iata: 'RIJ',
-		label: 'LIMA',
-		city: 'Rioja',
-		state: 'San-Martin',
-		country: 'PE',
-		elevation: 2707,
-		lat: -6.0678601265,
-		lon: -77.1600036621,
-		tz: 'America/Lima',
-	},
-	{
-		value: 'MEX',
-		iata: '',
-		name: 'Pampa Grande Airport',
-		city: 'Pampa Grande',
-		label: 'MEXICO',
-		country: 'PE',
-		elevation: 8727,
-		lat: -7.5999999046,
-		lon: -78.0500030518,
-		tz: 'America/Lima',
-	},
-]
+
 let listPerson = [
 	{
 		value: 1,
@@ -93,8 +68,8 @@ const SearchFilter = () => {
 	const formik = useFormik({
 		//enableReinitialize: true,
 		initialValues: {
-			initDate: new Date(),
-			endDate: new Date(),
+			initDate: '',
+			endDate: '',
 			origin: '',
 			destination: '',
 			Adults: 1,
@@ -116,7 +91,7 @@ const SearchFilter = () => {
 
 	return (
 		<>
-			<form onSubmit={formik.handleSubmit} className='mx-auto w-2/4 px-5 py-5 relative border search bg-white rounded-lg'>
+			<form onSubmit={formik.handleSubmit} className='mx-auto   px-5 py-5 relative border search bg-white rounded-lg'>
 				<div className='flex space-x-4'>
 					<ContainerForm name={'ORIGEN'}>
 						<Dropdown

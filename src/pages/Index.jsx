@@ -1,7 +1,6 @@
 import SearchFilter from '../components/searchFilter'
 import Result from '../components/Results'
 import Header from '../components/Header'
-import Footer from '../components/Footer'
 const Index = () => {
 	return (
 		<>
@@ -12,7 +11,6 @@ const Index = () => {
 			<main className='container mx-auto w-2/4 py-5 px-5 mt-5'>
 				<Result />
 			</main>
-			<Footer />
 		</>
 	)
 }

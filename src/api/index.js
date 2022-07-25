@@ -1,14 +1,3 @@
-const BASE_URL = 'https://www.themealdb.com/api/json/v1/1';
-
-export default async function apiCall(url, params) {
- try {
-  const response = await fetch(`${BASE_URL}${url}`, params);
-  const data = await response.json();
-  return Promise.resolve(data);
- } catch (error) {
-  return Promise.reject(error);
- }
-};
 
 export async function apiShopping(params,token ) {
     let urlencoded = new URLSearchParams()
@@ -18,7 +7,9 @@ export async function apiShopping(params,token ) {
 		urlencoded.append('currencyCode', 'USD')
 		urlencoded.append('children', params.children)
 		urlencoded.append('departureDate', params.initDate)
-		urlencoded.append('returnDate', params.endDate)
+        if (params.endDate !== '') {
+            urlencoded.append('returnDate', params.endDate)
+        }
     try {
      const response = await fetch(
         `${import.meta.env.VITE_URL_API_SHOPPING}?${urlencoded}`,

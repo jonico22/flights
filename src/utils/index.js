@@ -15,7 +15,6 @@ export const getDataAirport = ()=>{
 			}
 		)
 	})
-	console.log(newData)
 	return newData
 }
 
@@ -37,7 +36,6 @@ export const objectToArray = (data) => {
 
 export const detailFilter = (id,data)=>{
 	let filter = data.filter((item)=> item.id === id)
-	console.log(filter[0])
 	return filter[0]
 }
 

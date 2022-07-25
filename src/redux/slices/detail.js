@@ -6,14 +6,12 @@ import { objectToArray } from "../../utils";
 const initialState = {
 	isLoading: false,
 	data: [],
-	error: {},
+	error: [],
 	locations: [],
 	aircraft:[],
 	carriers:[],
 	meta:[]
 }
-
-
 
 const detailSlice = createSlice({
     name: 'detail',
@@ -46,7 +44,7 @@ const detailSlice = createSlice({
 });
 
 const { actions, reducer } = detailSlice;
-const { fetchDetailComplete,fetchDetailStart,
+const { fetchDetailComplete,fetchDetailStart,fetchDetailError,
 	fetchDetailLocations,
 	fetchDetailAircraft,
 	fetchDetailCarriers,
@@ -59,18 +57,24 @@ export const fetchResultsDetail = (data) => async (dispatch) => {
 		person: data.Adults,
 		children: data.kids,
 		initDate: format(data.initDate, 'yyyy-MM-dd'),
-		endDate:  format(data.endDate, 'yyyy-MM-dd')
+		endDate: data.endDate === '' ? '' :  format(data.endDate, 'yyyy-MM-dd')
 	}
 	try {
 		dispatch(fetchDetailStart())
 		let token = await apiAuht()
 		let response = await apiShopping(params,token.access_token)
-		dispatch(fetchDetailComplete(response.data))
-		dispatch(fetchDetailLocations(objectToArray(response.dictionaries.locations)))
-		dispatch(fetchDetailAircraft(objectToArray(response.dictionaries.aircraft)))
-		dispatch(fetchDetailCarriers(objectToArray(response.dictionaries.carriers)))
-		dispatch(fetchDetailMeta(response.meta))
+		if (response.errors){
+			dispatch(fetchDetailError(response.errors))
+		} else {
+			dispatch(fetchDetailComplete(response.data))
+			dispatch(fetchDetailLocations(objectToArray(response.dictionaries.locations)))
+			dispatch(fetchDetailAircraft(objectToArray(response.dictionaries.aircraft)))
+			dispatch(fetchDetailCarriers(objectToArray(response.dictionaries.carriers)))
+			dispatch(fetchDetailMeta(response.meta))
+		}
+		
 	} catch (error) {
+		console.log(error)
 		dispatch(fetchDetailError(error))
 	}
 }
